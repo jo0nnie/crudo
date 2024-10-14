@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\orden_tecnicos;
+use App\Models\orden_tecnico;
 use Illuminate\Http\Request;
 
-class OrdenTecnicosController extends Controller
+class OrdenTecnicoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OrdenTecnicosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\orden_tecnicos  $orden_tecnicos
+     * @param  \App\Models\orden_tecnico  $orden_tecnico
      * @return \Illuminate\Http\Response
      */
-    public function show(orden_tecnicos $orden_tecnicos)
+    public function show(orden_tecnico $orden_tecnico)
     {
         //
     }
@@ -52,10 +52,10 @@ class OrdenTecnicosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\orden_tecnicos  $orden_tecnicos
+     * @param  \App\Models\orden_tecnico  $orden_tecnico
      * @return \Illuminate\Http\Response
      */
-    public function edit(orden_tecnicos $orden_tecnicos)
+    public function edit(orden_tecnico $orden_tecnico)
     {
         //
     }
@@ -64,10 +64,10 @@ class OrdenTecnicosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\orden_tecnicos  $orden_tecnicos
+     * @param  \App\Models\orden_tecnico  $orden_tecnico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, orden_tecnicos $orden_tecnicos)
+    public function update(Request $request, orden_tecnico $orden_tecnico)
     {
         //
     }
@@ -75,10 +75,10 @@ class OrdenTecnicosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\orden_tecnicos  $orden_tecnicos
+     * @param  \App\Models\orden_tecnico  $orden_tecnico
      * @return \Illuminate\Http\Response
      */
-    public function destroy(orden_tecnicos $orden_tecnicos)
+    public function destroy(orden_tecnico $orden_tecnico)
     {
         //
     }

@@ -2,18 +2,22 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\material;
 
-class materialseeder extends Seeder
+class MaterialSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        //
+        Material::create([
+            'nombre' => 'Cables',
+            'Stock' => 600,
+            'Precio' => 3458.00,
+        ]);
+        Material::create([
+            'nombre' => 'Conectores',
+            'Stock' => 500,
+            'Precio' => 348578.00,
+        ]);
     }
 }

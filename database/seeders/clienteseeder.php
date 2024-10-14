@@ -4,21 +4,19 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\cliente;
-
 class ClienteSeeder extends Seeder
 {
     public function run()
     {
         Cliente::create([
-            'nombre' => 'Franco',
-            'apellido' => 'Gómez',
-            'email' => 'franco.gomez@ejemplo.com'
-        ]);
-
-        Cliente::create([
-            'nombre' => 'Ana',
+            'nombre' => 'Pedro',
             'apellido' => 'Martínez',
-            'email' => 'ana.martinez@ejemplo.com'
+            'email' => 'Pedro.martinez@correo.com',
+        ]);
+        Cliente::create([
+            'nombre' => 'Mateo',
+            'apellido' => 'Sánchez',
+            'email' => 'Mateo.sanchez@correo.com',
         ]);
     }
 }

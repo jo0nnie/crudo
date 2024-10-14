@@ -1,8 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\Models\tecnico;
+use App\Models\Tecnico;
 
 class TecnicoSeeder extends Seeder
 {
@@ -10,17 +11,17 @@ class TecnicoSeeder extends Seeder
     {
         Tecnico::create([
             'nombre' => 'Luis',
-            'apellido' => 'Navarro',
-            'email' => 'luis.navarro@ejemplo.com',
-            'disponibilidad' => 'Disponible'
+            'apellido' => 'García',
+            'email' => 'luis.garcia@empresa.com',
+            'disponibilidad' => 'Disponible',
         ]);
-
         Tecnico::create([
-            'nombre' => 'Pedro',
-            'apellido' => 'Ramírez',
-            'email' => 'pedro.ramirez@ejemplo.com',
-            'disponibilidad' => 'Ocupado'
+            'nombre' => 'Sofía',
+            'apellido' => 'Fernández',
+            'email' => 'sofia.fernandez@empresa.com',
+            'disponibilidad' => 'Ocupado',
         ]);
+        
     }
 }
 

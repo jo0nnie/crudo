@@ -1,25 +1,29 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\Models\orden_de_trabajo;
+use App\Models\Orden_de_Trabajo;
 
 class OrdenDeTrabajoSeeder extends Seeder
 {
     public function run()
     {
-        orden_de_trabajo::create([
+        Orden_de_Trabajo::create([
             'Estado' => 'Creado',
-            'Fecha de creación' => '2024-10-01',
-            'Tareas a relizar' => 'Instalación de Internet',
-            'cliente_id' => 1  
+            'Fecha_de_creacion' => '2024-10-13',
+            'Tareas_a_realizar' => 'Instalación de fibra óptica',
+            'cliente_id' => 1,
+            'gerente_id' => 1,
+            'equipo_de_trabajo_id' => 1,
         ]);
-
-        orden_de_trabajo::create([
+        Orden_de_Trabajo::create([
             'Estado' => 'En proceso',
-            'Fecha de creación' => '2024-10-05',
-            'Tareas a relizar' => 'Reparación de cableado',
-            'cliente_id' => 2 
+            'Fecha_de_creacion' => '2024-10-14',
+            'Tareas_a_realizar' => 'Mantenimiento de red',
+            'cliente_id' => 2,
+            'gerente_id' => 2,
+            'equipo_de_trabajo_id' => 2,
         ]);
     }
 }

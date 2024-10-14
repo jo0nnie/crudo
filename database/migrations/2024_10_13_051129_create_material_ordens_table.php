@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tecnicos', function (Blueprint $table) {
+        Schema::create('material_ordens', function (Blueprint $table) {
             $table->id();
-            $table ->string('nombre');
-            $table ->string('apellido');
-            $table ->string('email');
-            $table ->string('disponibilidad');
+            $table->foreignId('material_id')->constrained('materials')->onDelete('cascade');
+            $table->foreignId('orden_de_trabajo_id')->constrained('orden_de__trabajos')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tecnicos');
+        Schema::dropIfExists('material_ordens');
     }
 };

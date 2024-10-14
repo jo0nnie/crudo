@@ -2,18 +2,24 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Vehiculo;
 
-class vehiculoseeder extends Seeder
+class VehiculoSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        //
+        Vehiculo::create([
+            'patente' => 'ABC123',
+            'marca' => 'Citroen',
+            'modelo' => 'Berlingo',
+            'equipo_de_trabajo_id' => 1,
+        ]);
+        Vehiculo::create([
+            'patente' => 'DEF456',
+            'marca' => 'Ford',
+            'modelo' => 'Ranger',
+            'equipo_de_trabajo_id' => 2,
+        ]);
     }
 }

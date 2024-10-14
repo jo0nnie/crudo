@@ -10,15 +10,14 @@ class GerenteSeeder extends Seeder
     public function run()
     {
         Gerente::create([
-            'nombre' => 'Camila',
-            'apellido' => 'Pérez',
-            'email' => 'camila.perez@ejemplo.com'
+            'nombre' => 'Lara',
+            'apellido' => 'Perez',
+            'email' => 'Lara.perez@gmail.com',
         ]);
-
         Gerente::create([
-            'nombre' => 'María',
-            'apellido' => 'López',
-            'email' => 'maria.lopez@ejemplo.com'
+            'nombre' => 'Ana',
+            'apellido' => 'Gómez',
+            'email' => 'ana.gomez@gmail.com',
         ]);
     }
 }

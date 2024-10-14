@@ -2,18 +2,20 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\equipo_de_trabajo;
 
-class equipodetrabajoseeder extends Seeder
+class EquipoDeTrabajoSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        //
+        equipo_de_trabajo::create([
+            'equipo' => 'Equipo A',
+            'gerente_id' => 1,
+        ]);
+        equipo_de_trabajo::create([
+            'equipo' => 'Equipo B',
+            'gerente_id' => 2,
+        ]);
     }
 }

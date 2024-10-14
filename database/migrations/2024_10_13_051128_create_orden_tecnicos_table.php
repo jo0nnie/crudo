@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('materials', function (Blueprint $table) {
+        Schema::create('orden_tecnicos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('orden_de__trabajo_id')->constrained('orden_de__trabajos')->onDelete('cascade');
+            $table->foreignId('tecnico_id')->constrained('tecnicos')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materials');
+        Schema::dropIfExists('orden_tecnicos');
     }
 };

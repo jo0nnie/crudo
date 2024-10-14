@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orden_de_trabajos', function (Blueprint $table) {
+        Schema::create('tecnicos', function (Blueprint $table) {
             $table->id();
+            $table ->string('nombre',50);
+            $table ->string('apellido',50);
+            $table ->string('email',50)->unique();
+            $table ->enum('disponibilidad',['Disponible','Ocupado']);
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orden_de_trabajos');
+        Schema::dropIfExists('tecnicos');
     }
 };
