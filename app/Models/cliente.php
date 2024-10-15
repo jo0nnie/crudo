@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class cliente extends Model
 {
+    use HasFactory;
     public function ordenesDeTrabajo()
     {
         return $this->hasMany(orden_de_trabajo::class);
     }
+    protected $fillable = ['nombre', 'apellido', 'direccion'];
 }

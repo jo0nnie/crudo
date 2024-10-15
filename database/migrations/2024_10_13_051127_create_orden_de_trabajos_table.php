@@ -18,7 +18,9 @@ return new class extends Migration
             $table->enum('Estado',['Creado','En proceso','Finalizado','No realizado']);
             $table->date('Fecha_de_creacion');
             $table->string('Tareas_a_realizar');
-            $table->foreignId('cliente_id')->constrained('clientes')->onDelete('cascade');
+            $table->string('Nombre_de_Cliente')->nullable();
+            $table->string('Apellido_de_Cliente')->nullable();
+            $table->string('Direccion_de_cliente')->nullable();
             $table->foreignId('gerente_id')->nullable()->constrained('gerentes')->onDelete('set null');
             $table->foreignId('equipo_de_trabajo_id')->nullable()->constrained('equipo_de_trabajos')->onDelete('set null');
 

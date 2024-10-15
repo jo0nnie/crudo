@@ -12,5 +12,4 @@ class material_orden extends Model
 {
     return $this->belongsToMany(Orden_de_Trabajo::class, 'material_orden');
 }
-    
 }
