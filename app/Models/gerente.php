@@ -7,8 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gerente extends Model
 {
-    public function gruposDeTrabajo()
-    {
-        return $this->hasMany(equipo_de_trabajo::class);
-    }
+    use HasFactory;
 }

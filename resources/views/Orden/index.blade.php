@@ -1,8 +1,5 @@
 @extends('vistas/template')
-
-
 @section('title', 'Ordenes de Trabajo')
-
 @section('contenido')
 
 <main>
@@ -16,34 +13,28 @@
 
         <thead>
     <tr>
-        <th>#</th>
+        <th>Número de Orden</th>
         <th>Estado</th>
         <th>Fecha de Creación</th>
-        <th>Gerente</th>
-        <th>Tecnicos</th>
-        <th>Tareas a Realizar</th>
-        <th>Nombre de Cliente</th>
-        <th>Apellido de Cliente</th>
-        <th>Dirección de Cliente</th>
+        <th>Equipo</th>
+        <th>Cliente</th>
+        <th>Detalle</th>
         <th>Modificar</th>
-        <th>#</th>
+        <th>Eliminar</th>
     </tr>
 </thead>
 
 <tbody>
     @foreach($ordentrabajo as $orden)
     <tr>
-        <td>{{ $orden->id }}</td>
-        <td>{{ $orden->Estado }}</td>
-        <td>{{ $orden->Fecha_de_creacion }}</td>
-        <td>{{ $orden->gerente_id }}</td>
-        <td>{{ $orden->equipo_de_trabajo_id }}</td>
-        <td>{{ $orden->Tareas_a_realizar }}</td>
-        <td>{{ $orden->Nombre_de_Cliente }}</td>
-        <td>{{ $orden->apellido_de_Cliente }}</td>
-        <td>{{ $orden->Direccion_de_cliente }}</td>
-        <th><a href="{{url('orden_de_trabajo/'.'$orden->id'.'/edit')}}"class="btn btn-warning btn-sm">Modificar</a></th>
-        <td>#</td>
+        <td>{{$orden->id}}</td>
+        <td>{{$orden->Estado}}</td>
+        <td>{{$orden->Fecha_de_creacion}}</td>
+        <td>{{$orden->equipo_de_trabajo}}</td>
+        <td>{{$orden->cliente->nombre}} {{ $orden->cliente->apellido}}</td>
+        <td><button class="btn btn-Info btn-lg"><i class="fa-solid fa-eye"></i></td>
+        <th><a href="{{url('orden_de_trabajo/'.$orden->id.'/edit')}}"class="btn btn-warning btn-lg"><i class="fa-solid fa-pen-to-square"></i></a></th>
+        <td><button class="btn btn-danger btn-lg"><i class="fa-solid fa-trash-can"></i></td>
     </tr>
     @endforeach
 </tbody>

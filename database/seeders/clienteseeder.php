@@ -12,13 +12,11 @@ class ClienteSeeder extends Seeder
             'nombre' => 'Pedro',
             'apellido' => 'Martínez',
             'Direccion' => 'calle 934',
-            'email' => 'Pedro.martinez@correo.com',
         ]);
         Cliente::create([
             'nombre' => 'Mateo',
             'apellido' => 'Sánchez',
             'Direccion' => 'calle 129',
-            'email' => 'Mateo.sanchez@correo.com',
         ]);
     }
 }

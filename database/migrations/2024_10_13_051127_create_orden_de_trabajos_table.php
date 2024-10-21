@@ -15,13 +15,9 @@ return new class extends Migration
     {
         Schema::create('orden_de__trabajos', function (Blueprint $table) {
             $table->id();
-            $table->enum('Estado',['Creado','En proceso','Finalizado','No realizado']);
+            $table->string('Estado');
             $table->date('Fecha_de_creacion');
-            $table->string('Tareas_a_realizar');
-            $table->string('Nombre_de_Cliente')->nullable();
-            $table->string('Apellido_de_Cliente')->nullable();
-            $table->string('Direccion_de_cliente')->nullable();
-            $table->foreignId('gerente_id')->nullable()->constrained('gerentes')->onDelete('set null');
+            $table->foreignId('cliente_id')->nullable()->constrained('clientes')->onDelete('set null');
             $table->foreignId('equipo_de_trabajo_id')->nullable()->constrained('equipo_de_trabajos')->onDelete('set null');
 
             $table->timestamps();

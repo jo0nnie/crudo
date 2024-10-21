@@ -21,6 +21,7 @@ class OrdenDeTrabajoController extends Controller
     {
         $ordentrabajo = orden_de_trabajo::all();
         return view('Orden.index', ['ordentrabajo' => $ordentrabajo]);
+
     }
 
     /**
@@ -30,9 +31,9 @@ class OrdenDeTrabajoController extends Controller
      */
     public function create()
     {
-        $gerentes = Gerente::all();
         $equipos_de_trabajo = equipo_de_trabajo::all();
-        return view('Orden.create',compact('gerentes','equipos_de_trabajo'));
+        $clientes = cliente::all();
+        return view('Orden.create',compact('equipos_de_trabajo','clientes'));
     }
 
     /**
@@ -46,30 +47,23 @@ class OrdenDeTrabajoController extends Controller
         $request->validate([
             'Estado' => 'required',
             'Fecha' => 'required|date',
-            'Tarea' => 'required|string',
-            'Gerente' => 'required',
             'equipo_de_trabajo_id' => 'required',
-            'Nombre_de_Cliente' => 'required|string|max:200',
-            'apellido_de_Cliente' => 'required|string|max:200',
-            'Direccion' => 'required|string|max:200',
+            'nombre' => 'required|max:255',
+            'apellido' => 'required|max:255',
+            'direccion' => 'required|max:255',
 
         ]);
 
-        $cliente = cliente::create([
-            'nombre' => $request->input('Nombre_de_Cliente'),
-            'apellido' => $request->input('apellido_de_Cliente'),
-            'direccion' => $request->input('Direccion'),
-        ]);
+        $cliente = Cliente::firstOrCreate(
+            ['nombre' => $request->nombre, 'apellido' => $request->apellido],
+            ['direccion' => $request->direccion]
+        );
 
         $orden = new orden_de_trabajo();
         $orden->Estado = $request->input('Estado');
         $orden->Fecha_de_creacion = $request->input('Fecha');
-        $orden->Tareas_a_realizar = $request->input('Tarea');
-        $orden->gerente_id = $request->input('Gerente');
         $orden->equipo_de_trabajo_id = $request->input('equipo_de_trabajo_id');
-        $orden->Nombre_de_Cliente = $cliente->nombre;
-        $orden->apellido_de_Cliente= $cliente->apellido;
-        $orden->Direccion_de_cliente = $Direccion = $request->input('Direccion');
+        $orden->cliente_id = $cliente->id;
         $orden->save();
 
         return redirect('orden_de_trabajo')->with('success', 'Orden creada exitosamente.');
@@ -92,30 +86,44 @@ class OrdenDeTrabajoController extends Controller
      * @param  \App\Models\orden_de_trabajo  $orden_de_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-{
-    $ordenes = orden_de_trabajo::find($id);
-    $gerentes = gerente::all();
-    $equipos_de_trabajo = equipo_de_trabajo::all();
+    public function edit($id) {
+        $orden = orden_de_trabajo::findOrFail($id);
+        $equipos_de_trabajo = equipo_de_trabajo::all();
+        return view('Orden.edit', compact('orden', 'equipos_de_trabajo'));
 
-    return view('Orden.edit', [
-        'orden_de_trabajo' => $ordenes,
-        'gerentes' => $gerentes,
-        'equipos_de_trabajo' => $equipos_de_trabajo,
-    ]);
-}
+    }
+
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\orden_de_trabajo  $orden_de_trabajo
+     * @param  \Illuminate\Http\Request
+     * @param  \App\Models\orden_de_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, orden_de_trabajo $orden_de_trabajo)
-    {
-        //
+    public function update(Request $request, $id) {
+        $request->validate([
+            'Estado' => 'required',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'direccion' => 'required',
+            'equipo_de_trabajo_id' => 'required',
+        ]);
+        $orden = orden_de_trabajo::findOrFail($id);
+        $orden->Estado = $request->input('Estado');
+        $orden->equipo_de_trabajo_id = $request->input('equipo_de_trabajo_id');
+        $cliente = Cliente::findOrFail($orden->cliente_id);
+        $cliente->nombre = $request->input('nombre');
+        $cliente->apellido = $request->input('apellido');
+        $cliente->direccion = $request->input('direccion');
+
+        $cliente->save();
+        $orden->save();
+
+
+        return redirect('orden_de_trabajo')->with('success', 'Orden de trabajo actualizada correctamente.');
     }
+
 
     /**
      * Remove the specified resource from storage.

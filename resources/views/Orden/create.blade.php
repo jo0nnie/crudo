@@ -39,30 +39,10 @@
             </div>
 
             <div class="mb-3 row">
-                <label for= "Tarea" class="col-sm-2 col-form-label">Tarea a Realizar</label>
-                <div class="col-sm-5">
-                    <input type="text" class= "form-control" name="Tarea" id="Tarea" value="{{old('Tarea')}}" required>
-                </div>
-            </div>
-
-
-             <div class="mb-3 row">
-                <label for="Gerente" class="col-sm-2 col-form-label">Gerente</label>
-                <div class="col-sm-5">
-                    <select name="Gerente" id="Gerente" class="form-select" required>
-                        <option value="">Seleccionar Gerente</option>
-                        @foreach ($gerentes as $gerente)
-                            <option value="{{ $gerente->id }}">{{ $gerente->nombre }} {{ $gerente->apellido }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="mb-3 row">
                 <label for="Tecnicos" class="col-sm-2 col-form-label">Equipo de Trabajo</label>
                 <div class="col-sm-5">
                     <select name="equipo_de_trabajo_id" id="Tecnicos" class="form-select" required>
-                        <option value="">Seleccionar Grupo de Trabajo</option>
+                        <option value=""> </option>
                         @foreach ($equipos_de_trabajo as $equipo)
                             <option value="{{ $equipo->id }}">{{ $equipo->equipo }}</option>
                         @endforeach
@@ -70,28 +50,35 @@
                 </div>
             </div>
 
+
             <div class="mb-3 row">
-                <label for= "Nombre_de_Cliente" class="col-sm-2 col-form-label">Nombre de Cliente</label>
-                <div class="col-sm-5">
-                    <input type="text" class= "form-control" name="Nombre_de_Cliente" id="Nombre_de_Cliente" value="{{old('Nombre_de_Cliente')}}" required>
+                <label class="col-sm-2 col-form-label"><strong>Datos del Cliente</strong></label>
+            </div>
+
+            <div class="mb-3 row">
+
+                <div class="col-sm-2">
+                    <label for="nombre" class="col-form-label">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" value="{{ old('nombre') }}" required>
+                </div>
+
+
+                <div class="col-sm-2">
+                    <label for="apellido" class="col-form-label">Apellido</label>
+                    <input type="text" class="form-control" name="apellido" id="apellido" value="{{ old('apellido') }}" required>
                 </div>
             </div>
 
             <div class="mb-3 row">
-                <label for= "apellido_de_Cliente" class="col-sm-2 col-form-label">Apellido de Cliente</label>
-                <div class="col-sm-5">
-                    <input type="text" class= "form-control" name="apellido_de_Cliente" id="apellido_de_Cliente" value="{{old('apellido_de_Cliente')}}" required>
+                <div class="col-sm-2">
+                    <label for="direccion" class="col-form-label">Dirección</label>
+                    <input type="text" class="form-control" name="direccion" id="direccion" value="{{ old('direccion') }}" required>
                 </div>
             </div>
 
-            <div class="mb-3 row">
-                <label for= "Direccion" class="col-sm-2 col-form-label">Direccion de Cliente</label>
-                <div class="col-sm-5">
-                    <input type="text" class= "form-control" name="Direccion" id="Direccion" value="{{old('Direccion')}}" required>
-                </div>
-            </div>
 
-            <a href="{{url('orden_de_trabajo')}}"class="btn btn-secondary">Volver</a>
+
+            <a href="{{url('orden_de_trabajo')}}"class="btn btn-Primary">Volver</a>
             <button type="submit" class="btn btn-success">Guardar</button>
 
         </form>

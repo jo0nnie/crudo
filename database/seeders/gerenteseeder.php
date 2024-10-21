@@ -12,12 +12,10 @@ class GerenteSeeder extends Seeder
         Gerente::create([
             'nombre' => 'Lara',
             'apellido' => 'Perez',
-            'email' => 'Lara.perez@gmail.com',
         ]);
         Gerente::create([
             'nombre' => 'Ana',
             'apellido' => 'Gómez',
-            'email' => 'ana.gomez@gmail.com',
         ]);
     }
 }
