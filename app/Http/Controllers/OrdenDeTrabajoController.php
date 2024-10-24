@@ -19,7 +19,7 @@ class OrdenDeTrabajoController extends Controller
      */
     public function index()
     {
-        $ordentrabajo = orden_de_trabajo::all();
+        $ordentrabajo = orden_de_trabajo::with('equipo_de_trabajo','cliente')->get();
         return view('Orden.index', ['ordentrabajo' => $ordentrabajo]);
 
     }
@@ -58,12 +58,15 @@ class OrdenDeTrabajoController extends Controller
             ['nombre' => $request->nombre, 'apellido' => $request->apellido],
             ['direccion' => $request->direccion]
         );
+        $ultimoNumeroDeOrden = orden_de_trabajo::max('numero_de_orden');
+        $nuevoNumeroDeOrden = str_pad((int)$ultimoNumeroDeOrden + 1, 5, '0', STR_PAD_LEFT);
 
         $orden = new orden_de_trabajo();
         $orden->Estado = $request->input('Estado');
         $orden->Fecha_de_creacion = $request->input('Fecha');
         $orden->equipo_de_trabajo_id = $request->input('equipo_de_trabajo_id');
         $orden->cliente_id = $cliente->id;
+        $orden->numero_de_orden = $nuevoNumeroDeOrden;
         $orden->save();
 
         return redirect('orden_de_trabajo')->with('success', 'Orden creada exitosamente.');
@@ -87,6 +90,7 @@ class OrdenDeTrabajoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+
         $orden = orden_de_trabajo::findOrFail($id);
         $equipos_de_trabajo = equipo_de_trabajo::all();
         return view('Orden.edit', compact('orden', 'equipos_de_trabajo'));
@@ -131,8 +135,18 @@ class OrdenDeTrabajoController extends Controller
      * @param  \App\Models\orden_de_trabajo  $orden_de_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(orden_de_trabajo $orden_de_trabajo)
+    public function destroy($id)
     {
-        //
+        $orden_de_trabajo = orden_de_trabajo::find($id);
+        $cliente = Cliente::findOrFail($orden_de_trabajo->cliente_id);
+        $orden_de_trabajo -> delete();
+        $cliente_ordenes = orden_de_trabajo::where('cliente_id', $cliente->id)->count();
+
+        if ($cliente_ordenes == 0) {
+
+            $cliente->delete();
+    }
+
+        return redirect("orden_de_trabajo/");
     }
 }

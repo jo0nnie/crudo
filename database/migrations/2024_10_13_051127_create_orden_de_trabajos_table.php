@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('orden_de__trabajos', function (Blueprint $table) {
             $table->id();
+            $table->string('numero_de_orden', 10)->unique();
             $table->string('Estado');
             $table->date('Fecha_de_creacion');
             $table->foreignId('cliente_id')->nullable()->constrained('clientes')->onDelete('set null');

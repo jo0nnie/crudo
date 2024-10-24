@@ -14,11 +14,16 @@ class Orden_de_Trabajo extends Model
     }
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class);
+    return $this->belongsTo(Cliente::class);
     }
     public function materiales()
     {
         return $this->belongsToMany(Material::class, 'material_orden');
     }
+    public function equipo_de_trabajo()
+    {
+    return $this->belongsTo(equipo_de_trabajo::class, 'equipo_de_trabajo_id');
+}
+
 
 }

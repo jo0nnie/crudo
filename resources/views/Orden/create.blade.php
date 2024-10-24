@@ -24,9 +24,9 @@
             <div class="mb-3 row">
                 <label for= "Estado" class="col-sm-2 col-form-label">Estado de Orden</label>
                 <div class="col-sm-5">
-                    <select name="Estado" id="Estado" calss="form-select"required>
+                    <select name="Estado" id="Estado" class="form-select"required>
                         <option value=""></option>
-                        <option value="No realizado">No realizado</option>
+                        <option value="Creado">Creado</option>
                     </select>
                 </div>
             </div>
