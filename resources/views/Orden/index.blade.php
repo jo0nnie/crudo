@@ -5,7 +5,7 @@
 <main>
     <div class="container py-4">
         <h2>Lista de Ordenes</h2>
-        <table class="table table-striped table-bordered table-hover">
+        <table class="table table-striped table-bordered table-hover text-center">
             <thead class="bg-dark text-white">
                 <tr>
                     <th>Número de Orden</th>
