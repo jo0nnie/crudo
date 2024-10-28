@@ -21,5 +21,20 @@ class EquipoDeTrabajoSeeder extends Seeder
         equipo_de_trabajo::create([
             'equipo' => 'Equipo D',
         ]);
+        equipo_de_trabajo::create([
+            'equipo' => 'Equipo E',
+        ]);
+        equipo_de_trabajo::create([
+            'equipo' => 'Equipo F',
+        ]);
+        equipo_de_trabajo::create([
+            'equipo' => 'Equipo G',
+        ]);
+        equipo_de_trabajo::create([
+            'equipo' => 'Equipo H',
+        ]);
+        equipo_de_trabajo::create([
+            'equipo' => 'Equipo I',
+        ]);
     }
 }

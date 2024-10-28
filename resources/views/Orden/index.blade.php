@@ -39,6 +39,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div>
+            {{$ordentrabajo-> links('pagination::bootstrap-4')}}
+        </div>
 
 
         <div class="text mt-3">

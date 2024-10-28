@@ -19,7 +19,7 @@ class OrdenDeTrabajoController extends Controller
      */
     public function index()
     {
-        $ordentrabajo = orden_de_trabajo::with('equipo_de_trabajo','cliente')->get();
+        $ordentrabajo = orden_de_trabajo::with('equipo_de_trabajo','cliente')->paginate(2);
         return view('Orden.index', ['ordentrabajo' => $ordentrabajo]);
 
     }
