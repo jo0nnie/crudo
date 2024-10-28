@@ -35,9 +35,6 @@ class OrdenDeTrabajoController extends Controller
     return view('Orden.detalle', compact('orden'));
 }
 
-
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -66,7 +63,6 @@ class OrdenDeTrabajoController extends Controller
             'apellido' => 'required|max:255',
             'direccion' => 'required|max:255',
             'Tarea_a_realizar' => 'required',
-            'correo' => 'required',
 
         ]);
 
