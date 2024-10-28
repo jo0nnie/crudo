@@ -5,7 +5,7 @@
 <main>
     <div class="container py-4">
         <h2>Detalle de Orden</h2>
-        <h4>Equipo de Trabajo: {{ $orden->equipo_de_trabajo->equipo }}</h4>
+        <h4>Equipo de Trabajo</h4>
 
 
         <table class="table table-striped table-bordered table-hover text-center">
