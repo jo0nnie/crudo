@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('patente',50);
             $table->string('marca',50);
             $table->string('modelo',50);
-            $table->foreignId('equipo_de_trabajo_id')->nullable()->constrained('equipo_de_trabajos')->onDelete('set null');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

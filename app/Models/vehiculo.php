@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Vehiculo extends Model
 {
     use HasFactory;
-    public function grupoDeTrabajo()
-    {
-        return $this->belongsTo(equipo_de_trabajo::class);
-    }
+
+public function equipoTecnicos() {
+    return $this->hasMany(equipo_tecnico::class, 'vehiculo_id');
+}
+
 }
 
 

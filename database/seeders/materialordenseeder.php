@@ -19,5 +19,3 @@ class MaterialOrdenSeeder extends Seeder
         ]);
     }
 }
-
-

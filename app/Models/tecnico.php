@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Tecnico extends Model
 {
     use HasFactory;
-    public function gruposDeTrabajo()
-    {
-        return $this->belongsToMany(equipo_de_trabajo::class, 'grupo_tecnico');
-    }
+
     public function ordenes()
+    {
+        return $this->belongsToMany(orden_de_trabajo::class, 'orden_tecnicos');
+    }
+
+    public function equiposDeTrabajo()
 {
-    return $this->belongsToMany(orden_de_trabajo::class, 'orden_tecnicos');
+    return $this->belongsToMany(equipo_de_trabajo::class, 'equipo_tecnicos', 'tecnico_id', 'equipo_de_trabajo_id');
+}
+
 }
 
 
-}
+

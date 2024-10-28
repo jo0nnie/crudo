@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('equipo_de_trabajos', function (Blueprint $table) {
             $table->id();
             $table->string('equipo');
-            $table->foreignId('gerente_id')->constrained('gerentes')->onDelete('cascade');
             $table->timestamps();
         });
     }

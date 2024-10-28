@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nombre', 30);
             $table->integer('Stock');
             $table->double('Precio', 10, 2);
-            
+
             $table->timestamps();
         });
     }

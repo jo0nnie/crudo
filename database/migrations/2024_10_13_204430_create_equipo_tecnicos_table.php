@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('equipo_de_trabajo_id')->constrained('equipo_de_trabajos')->onDelete('cascade');
             $table->foreignId('tecnico_id')->constrained('tecnicos')->onDelete('cascade');
+            $table->unsignedBigInteger('vehiculo_id')->nullable()->constrained('vehiculos')->onDelete('set null');
             $table->timestamps();
         });
     }

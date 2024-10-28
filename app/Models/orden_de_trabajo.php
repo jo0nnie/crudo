@@ -22,8 +22,32 @@ class Orden_de_Trabajo extends Model
     }
     public function equipo_de_trabajo()
     {
+    return $this->belongsTo(equipo_de_trabajo::class);
+}
+public function equipoTecnicos()
+{
+    return $this->hasMany(equipo_tecnico::class);
+}
+public function tecnico()
+{
+    return $this->belongsTo(tecnico::class);
+}
+public function vehiculo()
+{
+    return $this->belongsTo(vehiculo::class);
+}
+public function equipoDeTrabajo()
+{
     return $this->belongsTo(equipo_de_trabajo::class, 'equipo_de_trabajo_id');
 }
+
+
+
+
+
+
+
+
 
 
 }

@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('numero_de_orden', 10)->unique();
             $table->string('Estado');
             $table->date('Fecha_de_creacion');
-            $table->foreignId('cliente_id')->nullable()->constrained('clientes')->onDelete('set null');
+            $table->string('Tarea_a_realizar');
+            $table->unsignedBigInteger('cliente_id')->nullable();
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('set null');
             $table->foreignId('equipo_de_trabajo_id')->nullable()->constrained('equipo_de_trabajos')->onDelete('set null');
 
             $table->timestamps();

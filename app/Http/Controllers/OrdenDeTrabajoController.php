@@ -24,6 +24,20 @@ class OrdenDeTrabajoController extends Controller
 
     }
 
+    public function detalle($id)
+{
+    $orden = Orden_de_Trabajo::with([
+        'equipo_de_trabajo.tecnicos',
+        'equipo_de_trabajo.vehiculo',
+        'cliente'
+    ])->findOrFail($id);
+
+    return view('Orden.detalle', compact('orden'));
+}
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,6 +65,8 @@ class OrdenDeTrabajoController extends Controller
             'nombre' => 'required|max:255',
             'apellido' => 'required|max:255',
             'direccion' => 'required|max:255',
+            'Tarea_a_realizar' => 'required',
+            'correo' => 'required',
 
         ]);
 
@@ -67,6 +83,7 @@ class OrdenDeTrabajoController extends Controller
         $orden->equipo_de_trabajo_id = $request->input('equipo_de_trabajo_id');
         $orden->cliente_id = $cliente->id;
         $orden->numero_de_orden = $nuevoNumeroDeOrden;
+        $orden->Tarea_a_realizar= $request->input('Tarea_a_realizar');
         $orden->save();
 
         return redirect('orden_de_trabajo')->with('success', 'Orden creada exitosamente.');
@@ -112,10 +129,12 @@ class OrdenDeTrabajoController extends Controller
             'apellido' => 'required',
             'direccion' => 'required',
             'equipo_de_trabajo_id' => 'required',
+            'Tarea_a_realizar' => 'required',
         ]);
         $orden = orden_de_trabajo::findOrFail($id);
         $orden->Estado = $request->input('Estado');
         $orden->equipo_de_trabajo_id = $request->input('equipo_de_trabajo_id');
+        $orden->Tarea_a_realizar = $request->input('Tarea_a_realizar');
         $cliente = Cliente::findOrFail($orden->cliente_id);
         $cliente->nombre = $request->input('nombre');
         $cliente->apellido = $request->input('apellido');

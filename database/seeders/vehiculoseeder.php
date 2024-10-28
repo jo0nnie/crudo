@@ -13,13 +13,26 @@ class VehiculoSeeder extends Seeder
             'patente' => 'ABC123',
             'marca' => 'Citroen',
             'modelo' => 'Berlingo',
-            'equipo_de_trabajo_id' => 1,
+            'foto' =>'vehiculo1.jpg',
+
         ]);
         Vehiculo::create([
             'patente' => 'DEF456',
             'marca' => 'Ford',
             'modelo' => 'Ranger',
-            'equipo_de_trabajo_id' => 2,
+            'foto' =>'vehiculo2.jpg',
+        ]);
+        Vehiculo::create([
+            'patente' => 'HIJ789',
+            'marca' => 'Volkswagen',
+            'modelo' => 'Amarok',
+            'foto' =>'vehiculo3.jpg',
+        ]);
+        Vehiculo::create([
+            'patente' => 'KLM101',
+            'marca' => 'Toyota',
+            'modelo' => 'Hilux',
+            'foto' =>'vehiculo4.jpg',
         ]);
     }
 }

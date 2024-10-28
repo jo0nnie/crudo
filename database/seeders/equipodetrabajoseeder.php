@@ -11,11 +11,15 @@ class EquipoDeTrabajoSeeder extends Seeder
     {
         equipo_de_trabajo::create([
             'equipo' => 'Equipo A',
-            'gerente_id' => 1,
         ]);
         equipo_de_trabajo::create([
             'equipo' => 'Equipo B',
-            'gerente_id' => 2,
+        ]);
+        equipo_de_trabajo::create([
+            'equipo' => 'Equipo C',
+        ]);
+        equipo_de_trabajo::create([
+            'equipo' => 'Equipo D',
         ]);
     }
 }

@@ -38,6 +38,7 @@
                 </div>
             </div>
 
+
             <div class="mb-3 row">
                 <label for="Tecnicos" class="col-sm-2 col-form-label">Equipo de Trabajo</label>
                 <div class="col-sm-5">
@@ -46,6 +47,20 @@
                         @foreach ($equipos_de_trabajo as $equipo)
                             <option value="{{ $equipo->id }}">{{ $equipo->equipo }}</option>
                         @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for= "Tarea_a_realizar" class="col-sm-2 col-form-label">Tarea a realizar</label>
+                <div class="col-sm-5">
+                    <select name="Tarea_a_realizar" id="Tarea_a_realizar" class="form-select"required>
+                        <option value=""></option>
+                        <option value="Conexion">Conexion</option>
+                        <option value="Desconexion">Desconexion</option>
+                        <option value="Reconexion">Reconexion</option>
+                        <option value="Servicio domiciliario">Servicio domiciliario</option>
+                        <option value="Servicio domiciliario">Instalación de equipos</option>
                     </select>
                 </div>
             </div>

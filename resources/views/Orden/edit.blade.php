@@ -57,6 +57,21 @@
             </div>
 
             <div class="mb-3 row">
+                <label for="Tarea_a_realizar" class="col-sm-2 col-form-label">Tarea a realizar</label>
+                <div class="col-sm-5">
+                    <select name="Tarea_a_realizar" id="Tarea_a_realizar" class="form-select" required>
+                        <option value=""></option>
+                        <option value="Conexion" {{ $orden->Tarea_a_realizar == 'Conexion' ? 'selected' : '' }}>Conexion</option>
+                        <option value="Desconexion" {{ $orden->Tarea_a_realizar == 'Desconexion' ? 'selected' : '' }}>Desconexion</option>
+                        <option value="Reconexion" {{ $orden->Tarea_a_realizar == 'Reconexion' ? 'selected' : '' }}>Reconexion</option>
+                        <option value="Servicio domiciliario" {{ $orden->Tarea_a_realizar == 'Servicio domiciliario' ? 'selected' : '' }}>Servicio domiciliario</option>
+                        <option value="Instalación de equipos" {{ $orden->Tarea_a_realizar == 'Instalación de equipos' ? 'selected' : '' }}>Instalación de equipos</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label"><strong>Datos del Cliente</strong></label>
             </div>
 

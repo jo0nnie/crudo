@@ -29,6 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::resource('/orden_de_trabajo', OrdenDeTrabajoController::class);
+    Route::get('orden_de_trabajo/{id}/detalle', [OrdenDeTrabajoController::class, 'detalle'])->name('orden_de_trabajo.detalle');
+
+
 });
 
 require __DIR__.'/auth.php';
