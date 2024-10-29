@@ -13,6 +13,7 @@ public function equipoTecnicos() {
     return $this->hasMany(equipo_tecnico::class, 'vehiculo_id');
 }
 
+
 }
 
 

@@ -84,7 +84,11 @@
             </tr>
             <tr>
                 <th>Cliente</th>
-                <td>{{ $orden->cliente->nombre }} {{ $orden->cliente->apellido }}</td>
+                <td>{{ $orden->cliente->nombre }} {{ $orden->cliente->apellido }} </td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ $orden->cliente->direccion }} </td>
             </tr>
             <tr>
                 <th>Tarea a Realizar</th>

@@ -38,8 +38,9 @@ public function vehiculo()
 }
 public function equipoDeTrabajo()
 {
-    return $this->belongsTo(equipo_de_trabajo::class, 'equipo_de_trabajo_id');
+    return $this->belongsTo(equipo_de_trabajo::class);
 }
+
 
 
 
