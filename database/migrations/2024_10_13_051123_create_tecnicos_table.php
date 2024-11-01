@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table ->string('nombre',50);
             $table ->string('apellido',50);
-            $table ->enum('disponibilidad',['Disponible','Ocupado']);
             $table->string('foto')->nullable();
             $table->string('correo')->unique();
             $table->timestamps();

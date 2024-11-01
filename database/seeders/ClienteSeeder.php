@@ -23,29 +23,5 @@ class ClienteSeeder extends Seeder
             'apellido' => 'Ramírez',
             'direccion' => 'Calle 123'
         ]);
-
-        Cliente::create([
-            'nombre' => 'Lucía',
-            'apellido' => 'Gómez',
-            'direccion' => 'calle 835'
-        ]);
-
-        Cliente::create([
-            'nombre' => 'Jorge',
-            'apellido' => 'Pérez',
-            'direccion' => 'calle 235'
-        ]);
-
-        Cliente::create([
-            'nombre' => 'Ana',
-            'apellido' => 'Martínez',
-            'direccion' => 'calle 407'
-        ]);
-
-        Cliente::create([
-            'nombre' => 'Miguel',
-            'apellido' => 'Torres',
-            'direccion' => 'Calle 222'
-        ]);
     }
 }

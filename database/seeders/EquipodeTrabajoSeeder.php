@@ -10,31 +10,17 @@ class EquipoDeTrabajoSeeder extends Seeder
     public function run()
     {
         equipo_de_trabajo::create([
-            'equipo' => 'Equipo A',
+            'equipo' => 'Equipo 1',
         ]);
         equipo_de_trabajo::create([
-            'equipo' => 'Equipo B',
+            'equipo' => 'Equipo 2',
         ]);
         equipo_de_trabajo::create([
-            'equipo' => 'Equipo C',
+            'equipo' => 'Equipo 3',
         ]);
         equipo_de_trabajo::create([
-            'equipo' => 'Equipo D',
+            'equipo' => 'Equipo 4',
         ]);
-        equipo_de_trabajo::create([
-            'equipo' => 'Equipo E',
-        ]);
-        equipo_de_trabajo::create([
-            'equipo' => 'Equipo F',
-        ]);
-        equipo_de_trabajo::create([
-            'equipo' => 'Equipo G',
-        ]);
-        equipo_de_trabajo::create([
-            'equipo' => 'Equipo H',
-        ]);
-        equipo_de_trabajo::create([
-            'equipo' => 'Equipo I',
-        ]);
+
     }
 }

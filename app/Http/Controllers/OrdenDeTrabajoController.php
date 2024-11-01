@@ -19,7 +19,7 @@ class OrdenDeTrabajoController extends Controller
      */
     public function index()
     {
-        $ordentrabajo = orden_de_trabajo::with('equipo_de_trabajo','cliente')->paginate(3);
+        $ordentrabajo = orden_de_trabajo::with('equipo_de_trabajo')->paginate(3);
         return view('Orden.index', ['ordentrabajo' => $ordentrabajo]);
 
     }
@@ -63,6 +63,7 @@ class OrdenDeTrabajoController extends Controller
             'apellido' => 'required|max:255',
             'direccion' => 'required|max:255',
             'Tarea_a_realizar' => 'required',
+            'numero_de_orden' => 'required',
 
         ]);
 
@@ -70,15 +71,13 @@ class OrdenDeTrabajoController extends Controller
             ['nombre' => $request->nombre, 'apellido' => $request->apellido],
             ['direccion' => $request->direccion]
         );
-        $ultimoNumeroDeOrden = orden_de_trabajo::max('numero_de_orden');
-        $nuevoNumeroDeOrden = str_pad((int)$ultimoNumeroDeOrden + 1, 5, '0', STR_PAD_LEFT);
 
         $orden = new orden_de_trabajo();
         $orden->Estado = $request->input('Estado');
         $orden->Fecha_de_creacion = $request->input('Fecha');
         $orden->equipo_de_trabajo_id = $request->input('equipo_de_trabajo_id');
         $orden->cliente_id = $cliente->id;
-        $orden->numero_de_orden = $nuevoNumeroDeOrden;
+        $orden->numero_de_orden = $request->input('numero_de_orden');
         $orden->Tarea_a_realizar= $request->input('Tarea_a_realizar');
         $orden->save();
 
