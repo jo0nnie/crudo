@@ -19,53 +19,76 @@
 
         <form action="{{ url('orden_de_trabajo') }}" method="post">
             @csrf
-            <div class="card mb-4">
-                <div class="card-header"><strong>Detalles de la Orden</strong></div>
-                <div class="card-body">
-                    <div class="mb-3 row">
-                        <label for="Estado" class="col-sm-3 col-form-label">Estado de Orden</label>
-                        <div class="col-sm-9">
-                            <select name="Estado" id="Estado" class="form-select" required>
-                                <option value=""></option>
-                                <option value="Creado">Creado</option>
-                            </select>
-                        </div>
+                    <!-- Número de Orden -->
+                    <div class="form-group">
+                        <label for="numero_de_orden" >Número de Orden</label>
+                        <input type="text" class="form-control" name="numero_de_orden" id="numero_de_orden" value="{{ old('numero_de_orden') }}" required>
+                    </div>
+                    
+                    <!-- Estado de Orden -->
+                    <div class="form-group">
+                        <label for="Estado" >Estado de Orden</label>
+                        <select name="Estado" id="Estado" class="form-select" required>
+                            <option value=""></option>
+                            <option value="Creado">Creado</option>
+                            <option value="En Proceso">En Proceso</option>
+                            <option value="Finalizado">Finalizado</option>
+                        </select>
                     </div>
 
-                    <div class="mb-3 row">
-                        <label for="Fecha" class="col-sm-3 col-form-label">Fecha de Creación</label>
-                        <div class="col-sm-9">
-                            <input type="date" class="form-control" name="Fecha" id="Fecha" value="{{ old('Fecha') }}" required>
-                        </div>
+                    <!-- Fecha de Creación -->
+                    <div class="form-group">
+                        <label for="Fecha" >Fecha de Creación</label>
+                        <input type="date" class="form-control" name="Fecha" id="Fecha" value="{{ old('Fecha') }}" required>
                     </div>
 
-                    <div class="mb-3 row">
-                        <label for="Tecnicos" class="col-sm-3 col-form-label">Equipo de Trabajo</label>
-                        <div class="col-sm-9">
+                    <!-- Equipo de Trabajo -->
+                    <div class="form-group">
+                        <label for="Tecnicos" >Equipo de Trabajo</label>
                             <select name="equipo_de_trabajo_id" id="Tecnicos" class="form-select" required>
                                 <option value=""></option>
                                 @foreach ($equipos_de_trabajo as $equipo)
                                     <option value="{{ $equipo->id }}">{{ $equipo->equipo }}</option>
                                 @endforeach
                             </select>
-                        </div>
                     </div>
 
-                    <div class="mb-3 row">
-                        <label for="Tarea_a_realizar" class="col-sm-3 col-form-label">Tarea a Realizar</label>
-                        <div class="col-sm-9">
+                    <!-- Tarea a Realizar -->
+                    <div class="form-group">
+                        <label for="Tarea_a_realizar" >Tarea a Realizar</label>
                             <select name="Tarea_a_realizar" id="Tarea_a_realizar" class="form-select" required>
                                 <option value=""></option>
                                 <option value="Conexion">Conexion</option>
                                 <option value="Desconexion">Desconexion</option>
                                 <option value="Reconexion">Reconexion</option>
                                 <option value="Servicio domiciliario">Servicio domiciliario</option>
-                                <option value="Instalación de equipos">Instalación de equipos</option>
                             </select>
-                        </div>
+                    </div>
+
+                    <!-- Materiales y Estado -->
+                    <div class="form-group">
+                        <label for="material_estado" >Materiales y Estado</label>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                @foreach(['router', 'cable', 'antena', 'módem'] as $material)
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <input type="checkbox" name="materiales[]" value="{{ $material }}" id="material_{{ $material }}" 
+                                                onchange="toggleEstado('{{ $material }}')">
+                                        <span>{{ ucfirst($material) }}</span>
+                                        <select name="material_estado[{{ $material }}]" class="form-control" 
+                                                id="estado_{{ $material }}" disabled>
+                                            <option value="completamente usado">Completamente Usado</option>
+                                            <option value="alcanzó">Alcanzó</option>
+                                            <option value="no alcanzó">No Alcanzó</option>
+                                            <option value="sobró">Sobró</option>
+                                        </select>
+                                    </div>
+                                @endforeach
+                            </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Datos del Cliente -->
             <div class="card mb-4">
                 <div class="card-header"><strong>Datos del Cliente</strong></div>
                 <div class="card-body">
@@ -79,19 +102,26 @@
                             <input type="text" class="form-control" name="apellido" id="apellido" value="{{ old('apellido') }}" required>
                         </div>
                     </div>
-
                     <div class="mb-3">
                         <label for="direccion" class="form-label">Dirección</label>
                         <input type="text" class="form-control" name="direccion" id="direccion" value="{{ old('direccion') }}" required>
                     </div>
                 </div>
             </div>
+
+            <!-- Botones de Acción -->
             <div class="text-start">
                 <a href="{{ url('orden_de_trabajo') }}" class="btn btn-primary me-2">Volver</a>
                 <button type="submit" class="btn btn-success">Guardar</button>
             </div>
-
         </form>
     </div>
 </main>
+<script>
+    function toggleEstado(material) {
+        const estadoSelect = document.getElementById(`estado_${material}`);
+        estadoSelect.disabled = !document.getElementById(`material_${material}`).checked;
+    }
+</script>
 @endsection
+
