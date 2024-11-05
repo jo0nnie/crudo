@@ -10,29 +10,25 @@ class VehiculoSeeder extends Seeder
     public function run()
     {
         Vehiculo::create([
-            'patente' => 'ABC123',
-            'marca' => 'Citroen',
-            'modelo' => 'Berlingo',
-            'foto' =>'vehiculo1.jpg',
+            'marca' => 'Toyota',
+            'modelo' => 'Corolla',
+            'foto' =>'Vehiculo1.jpeg',
 
         ]);
         Vehiculo::create([
-            'patente' => 'DEF456',
-            'marca' => 'Ford',
-            'modelo' => 'Ranger',
-            'foto' =>'vehiculo2.jpg',
+            'marca' => 'Fiat',
+            'modelo' => 'Cronos',
+            'foto' =>'Vehiculo2.jpeg',
         ]);
         Vehiculo::create([
-            'patente' => 'HIJ789',
+            'marca' => 'Fiat',
+            'modelo' => 'Bora',
+            'foto' =>'Vehiculo3.jpeg',
+        ]);
+        Vehiculo::create([
             'marca' => 'Volkswagen',
-            'modelo' => 'Amarok',
-            'foto' =>'vehiculo3.jpg',
-        ]);
-        Vehiculo::create([
-            'patente' => 'KLM101',
-            'marca' => 'Toyota',
-            'modelo' => 'Hilux',
-            'foto' =>'vehiculo4.jpg',
+            'modelo' => 'Voyage',
+            'foto' =>'Vehiculo4.jpeg',
         ]);
     }
 }

@@ -4,12 +4,7 @@
 
 <main>
     <div class="container py-4">
-        <h2>Detalle de Orden</h2>
-        <h4>Equipo de Trabajo</h4>
-
-
-        <table class="table table-striped table-bordered table-hover text-center">
-            <thead class="bg-dark text-white">
+        <table class="table table-striped table-hover">
             <tr>
                 <th>TÉCNICO 1</th>
                 <th>TÉCNICO 2</th>
@@ -21,20 +16,28 @@
                     @if(isset($orden->equipo_de_trabajo->tecnicos[0]))
                         <img src="{{ asset('Imagenes/Tecnicos/' . $orden->equipo_de_trabajo->tecnicos[0]->foto) }}"
                              alt="Foto de {{ $orden->equipo_de_trabajo->tecnicos[0]->nombre }}"
-                             style="width: 100px; height: 100px; border: 1px solid #000;">
+                             style="width: 100px; height: 100px; border: 1px solid;">
+                    @else
+                        <p>No hay técnico asignado.</p>
                     @endif
                 </td>
                 <td>
                     @if(isset($orden->equipo_de_trabajo->tecnicos[1]))
                         <img src="{{ asset('Imagenes/Tecnicos/' . $orden->equipo_de_trabajo->tecnicos[1]->foto) }}"
                              alt="Foto de {{ $orden->equipo_de_trabajo->tecnicos[1]->nombre }}"
-                             style="width: 100px; height: 100px; border: 1px solid #000;">
+                             style="width: 100px; height: 100px; border: 1px solid;">
+                    @else
+                        <p>No hay técnico asignado.</p>
                     @endif
                 </td>
                 <td>
-                    <img src="{{ asset('Imagenes/Vehiculos/' . $orden->equipo_de_trabajo->vehiculo->foto) }}"
-                         alt="Foto del Vehículo"
-                         style="width: 170px; height: 100px; border: 1px solid #000;">
+                    @if(isset($orden->equipo_de_trabajo->vehiculo))
+                        <img src="{{ asset('Imagenes/Vehiculos/' . $orden->equipo_de_trabajo->vehiculo->foto) }}"
+                             alt="Foto del Vehículo"
+                             style="width: 170px; height: 100px; border: 1px solid;">
+                    @else
+                        <p>No hay vehículo asignado.</p>
+                    @endif
                 </td>
             </tr>
             <tr>
@@ -49,7 +52,9 @@
                     @endif
                 </td>
                 <td>
-                    <p>{{ $orden->equipo_de_trabajo->vehiculo->marca }} {{ $orden->equipo_de_trabajo->vehiculo->modelo }}</p>
+                    @if(isset($orden->equipo_de_trabajo->vehiculo))
+                        <p>{{ $orden->equipo_de_trabajo->vehiculo->marca }} {{ $orden->equipo_de_trabajo->vehiculo->modelo }}</p>
+                    @endif
                 </td>
             </tr>
             <tr>
@@ -64,19 +69,21 @@
                     @endif
                 </td>
                 <td>
-                    <p>{{ $orden->equipo_de_trabajo->vehiculo->patente }}</p>
+                    @if(isset($orden->equipo_de_trabajo->vehiculo))
+                        <p>{{ $orden->equipo_de_trabajo->vehiculo->patente }}</p>
+                    @endif
                 </td>
             </tr>
         </table>
 
-        <table class="table table-striped table-bordered table-hover">
-            <tr>
+        <table class="table table-striped table-hover">
+        <tr>
                 <th>Número de Orden</th>
                 <td>{{ $orden->numero_de_orden }}</td>
             </tr>
             <tr>
                 <th>Equipo de Trabajo</th>
-                <td>{{ $orden->equipo_de_trabajo->equipo }}</td>
+                <td>{{ $orden->equipo_de_trabajo->equipo ?? 'No asignado' }}</td>
             </tr>
             <tr>
                 <th>Estado</th>
@@ -84,11 +91,11 @@
             </tr>
             <tr>
                 <th>Cliente</th>
-                <td>{{ $orden->cliente->nombre }} {{ $orden->cliente->apellido }} </td>
+                <td>{{ $orden->cliente->nombre }} {{ $orden->cliente->apellido }}</td>
             </tr>
             <tr>
                 <th>Direccion</th>
-                <td>{{ $orden->cliente->direccion }} </td>
+                <td>{{ $orden->cliente->direccion }}</td>
             </tr>
             <tr>
                 <th>Tarea a Realizar</th>
@@ -100,7 +107,8 @@
             </tr>
         </table>
 
-        <a href="{{url('orden_de_trabajo')}}" class="btn btn-primary">Volver</a>
+        <a href="{{ url('orden_de_trabajo') }}" class="btn btn-primary">Volver</a>
     </div>
 </main>
 @endsection
+

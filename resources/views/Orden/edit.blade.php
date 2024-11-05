@@ -28,7 +28,6 @@
                         <div class="col-sm-9">
                             <select name="Estado" id="Estado" class="form-select" required>
                                 <option value=""></option>
-                                <option value="No realizado" {{ $orden->Estado == 'No realizado' ? 'selected' : '' }}>No realizado</option>
                                 <option value="Realizado" {{ $orden->Estado == 'Realizado' ? 'selected' : '' }}>Realizado</option>
                                 <option value="Creado" {{ $orden->Estado == 'Creado' ? 'selected' : '' }}>Creado</option>
                                 <option value="En proceso" {{ $orden->Estado == 'En proceso' ? 'selected' : '' }}>En proceso</option>
@@ -64,7 +63,6 @@
                                 <option value="Desconexion" {{ $orden->Tarea_a_realizar == 'Desconexion' ? 'selected' : '' }}>Desconexion</option>
                                 <option value="Reconexion" {{ $orden->Tarea_a_realizar == 'Reconexion' ? 'selected' : '' }}>Reconexion</option>
                                 <option value="Servicio domiciliario" {{ $orden->Tarea_a_realizar == 'Servicio domiciliario' ? 'selected' : '' }}>Servicio domiciliario</option>
-                                <option value="Instalación de equipos" {{ $orden->Tarea_a_realizar == 'Instalación de equipos' ? 'selected' : '' }}>Instalación de equipos</option>
                             </select>
                         </div>
                     </div>

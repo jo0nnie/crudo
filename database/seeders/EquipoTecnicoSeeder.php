@@ -24,7 +24,30 @@ class EquipoTecnicoSeeder extends Seeder
             'tecnico_id' => 3,
             'vehiculo_id' => 2,
         ]);
-
-
+        equipo_tecnico::create([
+            'equipo_de_trabajo_id' => 2,
+            'tecnico_id' => 4,
+            'vehiculo_id' => 2,
+        ]);
+        equipo_tecnico::create([
+            'equipo_de_trabajo_id' => 3,
+            'tecnico_id' => 5,
+            'vehiculo_id' => 3,
+        ]);
+        equipo_tecnico::create([
+            'equipo_de_trabajo_id' => 3,
+            'tecnico_id' => 6,
+            'vehiculo_id' => 3,
+        ]);
+        equipo_tecnico::create([
+            'equipo_de_trabajo_id' => 4,
+            'tecnico_id' => 7,
+            'vehiculo_id' => 4,
+        ]);
+        equipo_tecnico::create([
+            'equipo_de_trabajo_id' => 4,
+            'tecnico_id' => 8,
+            'vehiculo_id' => 4,
+        ]);
     }
 }

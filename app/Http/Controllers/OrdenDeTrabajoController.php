@@ -19,7 +19,7 @@ class OrdenDeTrabajoController extends Controller
      */
     public function index()
     {
-        $ordentrabajo = orden_de_trabajo::with('equipo_de_trabajo')->paginate(3);
+        $ordentrabajo = orden_de_trabajo::with('equipo_de_trabajo')->paginate(7);
         return view('Orden.index', ['ordentrabajo' => $ordentrabajo]);
 
     }
@@ -153,16 +153,14 @@ class OrdenDeTrabajoController extends Controller
      public function destroy($id)
      {
          $orden_de_trabajo = orden_de_trabajo::find($id);
+     
          if ($orden_de_trabajo) {
-             $cliente = Cliente::findOrFail($orden_de_trabajo->cliente_id);
              $orden_de_trabajo->delete();
-             $cliente_ordenes = orden_de_trabajo::where('cliente_id', $cliente->id)->count();
-             if ($cliente_ordenes == 0) {
-                 $cliente->delete();
-             }
+             
              return redirect("orden_de_trabajo/")->with('success', 'Orden eliminada exitosamente.');
          }
+         
          return redirect("orden_de_trabajo/")->with('error', 'Orden no encontrada.');
      }
-
+     
 }

@@ -16,15 +16,11 @@ class Orden_de_Trabajo extends Model
     {
     return $this->belongsTo(Cliente::class);
     }
-    public function materiales()
-    {
-        return $this->belongsToMany(Material::class, 'material_orden');
-    }
     public function equipo_de_trabajo()
     {
-    return $this->belongsTo(equipo_de_trabajo::class);
-}
-public function equipoTecnicos()
+        return $this->belongsTo(equipo_de_trabajo::class, 'equipo_de_trabajo_id'); // Asegúrate de que el segundo parámetro sea el nombre de la columna
+    }
+    public function equipoTecnicos()
 {
     return $this->hasMany(equipo_tecnico::class);
 }
